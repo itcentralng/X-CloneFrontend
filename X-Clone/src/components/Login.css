@@ -14,20 +14,24 @@ body {
   height: 100%;
   width: 100%;
 }
-
-/* login Container */
-.login-container {
+.container {
   display: flex;
   justify-content: center;
-  align-items: center;
+}
+
+/* login Container */
+.container .login-container {
+  display: flex;
+  justify-content: center;
   gap: 10rem;
   color: white;
   margin: auto;
   padding: 50px;
+  z-index: 0;
 }
 
 @media(max-width: 47rem) {
-  .login-container {
+  .container .login-container {
     flex-direction: column;   
     gap: 2rem; 
   }
@@ -37,7 +41,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40%;
 }
 
 @media(max-width: 47rem) {
@@ -48,7 +51,7 @@ body {
 }
 
 .login-container .x-logo img {
-  width: 60%;
+  width: 70%;
 }
 
 @media(max-width: 47rem) {
@@ -122,19 +125,19 @@ body {
 }
 
 /* Separator*/
-.login-container .separator {
+ .separator {
   text-align: center;
   width: 70%;
   position: relative;
 }
 
 @media(max-width: 47rem) {
-  .login-container .separator {
+   .separator {
     width: 100%;
   }
 }
 
-.login-container .separator span {
+ .separator span {
   position: relative;
   z-index: 1;
   background: #000000;
@@ -145,7 +148,7 @@ body {
 }
 
 
-.login-container .separator::after {
+.separator::after {
   position: absolute;
   content: "";
   left: 0;
@@ -199,4 +202,3 @@ body {
 .login-container .bg-dark:hover {
   background-color: hsl(0, 0%, 9%);
 }
-
