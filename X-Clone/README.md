@@ -21,4 +21,17 @@ cd the folder name to migrate to the current directory
 install package using ```npm install```  
 run project ```npm run dev```   
 
+# QA Report - X-Clone project
 
+## Setup Verification
+Cloned repo, installed dependencies, and confirmed project runs succesfully.
+`/` (Home) works on **main** branch.
+`/login` works on **login-setup** branch.
+
+## README Clarifications 
+- Actual Vite project is inside the `X-CloneFrontend/X-clone`
+- Update steps to include `cd X-CloneFrontend/X-Clone` before `npm install`
+
+## Suggestions For improvement
+- Unify `Login` and `LoginPage` naming 
+- Organize structure into `src/pages` and `src/components`. 
