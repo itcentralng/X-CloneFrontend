@@ -1,10 +1,12 @@
-import Home from "./components/Home"
+import Home from "./components/Home";
+import SignUp from "./components/signUp";
+
 function App() {
-
-
   return (
-    <>
-     <Home /> 
+    <>  
+   <SignUp />
+    {/*  <Home />  */}
+    
     </>
   )
 }

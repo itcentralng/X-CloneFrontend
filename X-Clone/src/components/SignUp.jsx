@@ -15,7 +15,7 @@ function SignUp() {
     password: '',
   });
   
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(2);
 
   const nextStep = () => setStep (step + 1)
   const prevStep = () => setStep (step - 1)
@@ -27,7 +27,7 @@ function SignUp() {
   
   return (
     <div className='w-full h-screen bg-gray-800 flex items-center justify-center'>
-      <div className="w-[550px] min-h-[450px] shadow bg-black rounded-xl flex flex-col justify-center items-center">
+      <div className="w-[550px] min-h-[450px] shadow bg-black rounded-xl">
          <div className="flex items-center justify-center">
       {step === 1 && (
         <StepOne
