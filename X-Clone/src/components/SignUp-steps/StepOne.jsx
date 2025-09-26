@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Xlogo from "../../images/X.png"
 
 const months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", 
    "September", "October", "November", "December"
@@ -41,9 +42,12 @@ function StepOne({formData, handleChange, nextStep}) {
    !formData.dobYear
 
   return (
-    <div className="p-4 flex flex-col items-center">
+    <div className="px-4 flex flex-col items-center !space-y-4">
       <div className="w-[400px]">
-         <h2 className="text-white md:text-3xl font-bold py-4">Create your account</h2>
+         <div className="flex items-center justify-center">
+            <img src={Xlogo} alt="Xlogo-icon" className="w-[50px] h-[50px]" />
+         </div>
+         <h2 className="text-white md:text-3xl font-bold !py-4">Create your account</h2>
          <input type="text"
          name="name"
          placeholder="Name"
@@ -53,7 +57,7 @@ function StepOne({formData, handleChange, nextStep}) {
          />
          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
-         <div className="py-4">
+         <div className="!py-4">
          <input type="email"
          placeholder="Email"
          name="email"
@@ -65,8 +69,8 @@ function StepOne({formData, handleChange, nextStep}) {
          </div>
 
          <div >
-            <p className="text-white font-semibold pt-2">Date of birth</p>
-            <p className="text-gray-500 pb-2 text-sm">This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
+            <p className="text-white font-semibold !pt-2">Date of birth</p>
+            <p className="text-gray-500 !pb-2 text-sm">This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
 
 
            <div className="flex gap-4 mb-6 py-4">
@@ -112,7 +116,7 @@ function StepOne({formData, handleChange, nextStep}) {
        <div className="flex items-center justify-center">
          <button onClick={handleNext}
          disabled={isDisabled} 
-         className={`rounded-full p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
+         className={`rounded-full !p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
             ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer"
          }`}>Next</button>
        </div>

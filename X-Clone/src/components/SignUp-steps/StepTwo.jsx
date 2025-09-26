@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { MoveLeft } from 'lucide-react';
+import Xlogo from "../../images/X.png"
 
 function StepTwo({formData, handleChange, prevStep, nextStep}) {
   const [error, setError] = useState ({})
@@ -30,6 +31,9 @@ function StepTwo({formData, handleChange, prevStep, nextStep}) {
       </div>
       <div className="py-4">
         <div className="">
+           <div className="flex justify-center !space-y-4">
+                    <img src={Xlogo} alt="Xlogo-icon" className="w-[50px] h-[50px]" />
+                  </div>
         <h2 className="text-white md:text-3xl font-bold pt-6">We sent you a code</h2>
         <p className="text-gray-500 text-sm py-2">Enter it below to verify{formData.email}</p>
 

@@ -1,4 +1,6 @@
 import { useState } from "react"
+import Xlogo from "../../images/X.png"
+
 
 function StepThree({formData, handleChange}) {
   const [error, setError] = useState({})
@@ -24,8 +26,11 @@ function StepThree({formData, handleChange}) {
   } 
   const isDisabled = !formData.password
   return (
-    <div className="pt-6 flex flex-col items-center">
+    <div className="flex flex-col items-center !space-y-4">
       <div className="w-[400px]">
+        <div className="flex justify-center">
+          <img src={Xlogo} alt="Xlogo-icon" className="w-[50px] h-[50px]" />
+        </div>
         <h2 className="text-white md:text-3xl font-bold pt-4">You'll need a password</h2>
         <p className="text-gray-500 text-sm mb-4">Make sure it's 8 characters or more </p>
 
