@@ -26,8 +26,8 @@ function SignUp() {
   
   
   return (
-    <div className='w-full h-screen bg-gray-800 flex items-center justify-center pt-4'>
-      <div className="w-[550px] min-h-[500px] shadow bg-black rounded-xl">
+    <div>
+      <div>
          <div className="w-full h-full">
       {step === 1 && (
         <StepOne
