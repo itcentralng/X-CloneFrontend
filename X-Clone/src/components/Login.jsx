@@ -1,6 +1,12 @@
 import React from 'react'
+import { useState } from 'react'
+import Modal from './SignUp-steps/Modal'
+import SignUp from "./SignUp"
 import './Login.css'
 const Login = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const openModal = () => setIsModalOpen(true)
+  const closeModal = () => setIsModalOpen(false)
   return (
     <>
       <div className="container">
@@ -23,7 +29,12 @@ const Login = () => {
 
             <p className='separator'><span>or</span></p>
 
-            <a href="#" className='create-btn social-button'>Create account</a>
+            <a href="#" className='create-btn social-button' onClick={(e) => { e.preventDefault(); openModal(); }}>Create account</a>
+            {isModalOpen && (
+          <Modal onClose={closeModal} >
+              <SignUp />
+            </ Modal>
+            )}
 
             <p className='low-description'>By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>, including <a href="">Cookie use.</a></p>
 
