@@ -17,7 +17,7 @@ const Login = () => {
       return;
     }
     setError("");
-    // Add further submit logic here if needed
+    // API call here
   };
 
   return (
@@ -63,7 +63,7 @@ const Login = () => {
         {
 
           showModal &&
-          <form action="/" onSubmit={handleSubmit} className='signIn-container'>
+          <form onSubmit={handleSubmit} className='signIn-container'>
             <div className="x-logo">
               <div onClick={handleShowModal} className='close-btn'>&times;</div>
               <img src="/src/images/Ninja-x.png" alt="X-image" />
@@ -94,7 +94,7 @@ const Login = () => {
               {error && <p className="error-message">{error}</p>}
 
               <button type="submit" className="social-button font-bold">Next</button>
-              <button type="submit" className="social-button font-bold bg-dark">
+              <button className="social-button font-bold bg-dark">
                 Forgot password?
               </button>
 
