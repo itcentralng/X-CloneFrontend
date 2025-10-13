@@ -15,10 +15,14 @@ const user = {name: "John", userName:"@john01",
    Joined: "Joined March 2020", followersCount: "Following", 
    followingCount: "Followers"
 }
+const posts = [
+   {id:1, title: "The Emerging world of Technology", content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores unde esse aliquid explicabo similique asperiores in libero necessitatibus quos, porro labore ad quaerat molestiae"},
+   {id:2, title: "The AI the new trend in 2025", content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores unde esse aliquid explicabo similique asperiores in libero necessitatibus quos, porro labore ad quaerat molestiae"}
+]
   return (
     <div className="w-full h-screen bg-black text-white flex justify-center">
-      <div className="w-full max-w-[900px] ">
-        <div className="w-full max-w-[550px] mx-auto bg-black">
+      <div className="w-full max-w-[900px]">
+        <div className="w-full max-w-[550px] mx-auto bg-black border border-gray-700">
         {/* Header */}
          <div className="bg-black fixed top-0 z-50 w-full  max-w-[550px] h-[55px]">
             <div className="flex justify-between !p-2">
@@ -74,6 +78,20 @@ const user = {name: "John", userName:"@john01",
                <p>123 <span className="text-gray-500 text-sm hover:cursor-pointer">{user.followingCount}</span></p>
               
             </section>
+            {/* Post section */}
+            <section>
+               <div className="!p-2">
+                  <p className="font-bold !py-4 border-b-* border-b border-b-gray-600">Posts</p>
+                  {posts.map((post => (
+                     <div key={post.id} className="text-sm !py-4">
+                        <p>{post.title}</p>
+                        <p>{post.content}</p>
+                     </div>
+
+                  )))}
+               </div>
+            </section>
+
          </div>
           
          
