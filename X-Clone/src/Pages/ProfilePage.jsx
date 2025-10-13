@@ -60,7 +60,7 @@ const posts = [
             </div>
             <p  className="!p-2">{user.Bio}</p>
             <div className="flex flex-wrap text-gray-500 text-sm gap-4 !p-2">
-               <div className="flex gap-1">
+               <div className="flex ">
                   <MapPin size={15}/>
                   <p>{user.Location}</p>
                </div>
