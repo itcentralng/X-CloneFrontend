@@ -17,7 +17,7 @@ const user = {name: "John", userName:"@john01",
 }
 const posts = [
    {id:1, title: "The Emerging world of Technology", content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores unde esse aliquid explicabo similique asperiores in libero necessitatibus quos, porro labore ad quaerat molestiae"},
-   {id:2, title: "The AI the new trend in 2025", content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores unde esse aliquid explicabo similique asperiores in libero necessitatibus quos, porro labore ad quaerat molestiae"}
+   {id:2, title: "AI the new trend in 2025", content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores unde esse aliquid explicabo similique asperiores in libero necessitatibus quos, porro labore ad quaerat molestiae"}
 ]
   return (
     <div className="w-full h-screen bg-black text-white flex justify-center">
