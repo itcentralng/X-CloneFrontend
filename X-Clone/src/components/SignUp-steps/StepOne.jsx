@@ -117,7 +117,7 @@ function StepOne({formData, handleChange, nextStep}) {
          <button onClick={handleNext}
          disabled={isDisabled} 
          className={`rounded-full !p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
-            ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer"
+            ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer text-black "
          }`}>Next</button>
        </div>
     </div>
