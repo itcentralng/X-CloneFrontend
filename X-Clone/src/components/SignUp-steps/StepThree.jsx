@@ -1,26 +1,37 @@
 import { useState } from "react"
 import Xlogo from "../../images/X.png"
+import Axios from "axios"
 
 
 function StepThree({formData, handleChange}) {
   const [error, setError] = useState({})
+  const [data, setData] = useState(null)
   const validate = () => {
     const error = {}
     if (!formData.password) {
       error.password = "password is required"
 
-    } else if (formData.password.length < 8) {
+    } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/.test(formData.password)) {
       error.password = "Your password needs to be at least 8 characters. Please enter a longer one."
     }
     return error
   }
 
-  const handleSumbit = () => {
+  const handleSubmit = async  () => {
     const passwordError = validate()
-    if (Object.keys (passwordError).length === 0) {
-      console.log(formData)
-    } else {
+    if (Object.keys(passwordError).length !== 0) {
       setError(passwordError)
+      return
+      
+    } else {
+      console.log(formData);
+    }
+    try {
+      const response = await Axios.post('https://x-clonebackend-tyqz.onrender.com/register', formData)
+      setData(response.data)
+    } catch (error) {
+      setError(error)
+      
     }
 
   } 
@@ -46,12 +57,17 @@ function StepThree({formData, handleChange}) {
           including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account secure and personalizing our services, including ads. <a href="#" className="text-blue-500">Learn more</a>. Others will be able to find you by email or phone number, 
           when provided, unless you choose otherwise <a href="#" className="text-blue-500">here</a>.</p>
         <div className="flex justify-center py-6">
-          <button onClick={handleSumbit} disabled = {isDisabled}
+          <button onClick={handleSubmit} disabled = {isDisabled}
           className={`rounded-full p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
             ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer"
          }`}>Sign Up</button>
         </div>
       </div>
+      {data && (
+        <div className="text-green-500 text-sm font-semibold mt-4">
+          Signup Successful
+        </div>
+      )}
     </div>
   )
 }
