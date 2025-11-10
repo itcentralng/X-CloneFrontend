@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-   baseURL: 'https://x-clonebackend-tyqz.onrender.com'})
+   baseURL: '/api'})
 
    api.interceptors.request.use(
       (config) => {
