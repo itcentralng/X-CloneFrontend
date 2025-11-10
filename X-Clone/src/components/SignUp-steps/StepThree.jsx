@@ -11,28 +11,29 @@ function StepThree({formData, handleChange}) {
     if (!formData.password) {
       error.password = "password is required"
 
-    } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/.test(formData.password)) {
-      error.password = "Your password needs to be at least 8 characters. Please enter a longer one."
-    }
+} else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/.test(formData.password)) {
+  error.password = "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
+}
     return error
   }
 
   const handleSubmit = async  () => {
     const passwordError = validate()
     if (Object.keys(passwordError).length !== 0) {
-      setError(passwordError)
-      return
-      
-    } else {
-      console.log(formData);
-    }
-    try {
-      const response = await Axios.post('https://x-clonebackend-tyqz.onrender.com/register', formData)
-      setData(response.data)
-    } catch (error) {
-      setError(error)
-      
-    }
+  setError(passwordError);
+  return;
+}
+
+// Debug logging removed for production safety.
+
+try {
+  const response = await Axios.post('https://x-clonebackend-tyqz.onrender.com/register', formData);
+  setData(response.data);
+} catch (error) {
+  setError({
+    password: error.response?.data?.message || 'Registration failed'
+  });
+}
 
   } 
   const isDisabled = !formData.password
