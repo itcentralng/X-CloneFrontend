@@ -47,7 +47,7 @@ function StepThree({formData, handleChange}) {
           when provided, unless you choose otherwise <a href="#" className="text-blue-500">here</a>.</p>
         <div className="flex justify-center py-6">
           <button onClick={handleSumbit} disabled = {isDisabled}
-          className={`rounded-full p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
+          className={`rounded-full p-2 font-semibold min-w-md hover:cursor-pointer text-black ${isDisabled
             ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer"
          }`}>Sign Up</button>
         </div>

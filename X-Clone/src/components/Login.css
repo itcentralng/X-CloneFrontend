@@ -1,9 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
+/* * {
   box-sizing: border-box;
   text-decoration: none;
-}
+} */
 
 body {
   background-color: #000000;
@@ -21,7 +19,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 10rem;
-  color: white;
+  /* color: white; */
   margin: auto;
   padding: 50px;
   position: relative;
