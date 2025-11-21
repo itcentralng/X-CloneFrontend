@@ -1,27 +1,39 @@
 import { useState } from "react"
 import Xlogo from "../../images/X.png"
+import Axios from "axios"
 
 
 function StepThree({formData, handleChange}) {
   const [error, setError] = useState({})
+  const [data, setData] = useState(null)
   const validate = () => {
     const error = {}
     if (!formData.password) {
       error.password = "password is required"
 
-    } else if (formData.password.length < 8) {
-      error.password = "Your password needs to be at least 8 characters. Please enter a longer one."
-    }
+} else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/.test(formData.password)) {
+  error.password = "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
+}
     return error
   }
 
-  const handleSumbit = () => {
+  const handleSubmit = async  () => {
     const passwordError = validate()
-    if (Object.keys (passwordError).length === 0) {
-      console.log(formData)
-    } else {
-      setError(passwordError)
-    }
+    if (Object.keys(passwordError).length !== 0) {
+  setError(passwordError);
+  return;
+}
+
+// Debug logging removed for production safety.
+
+try {
+  const response = await Axios.post('https://x-clonebackend-tyqz.onrender.com/register', formData);
+  setData(response.data);
+} catch (error) {
+  setError({
+    password: error.response?.data?.message || 'Registration failed'
+  });
+}
 
   } 
   const isDisabled = !formData.password
@@ -52,6 +64,11 @@ function StepThree({formData, handleChange}) {
          }`}>Sign Up</button>
         </div>
       </div>
+      {data && (
+        <div className="text-green-500 text-sm font-semibold mt-4">
+          Signup Successful
+        </div>
+      )}
     </div>
   )
 }
