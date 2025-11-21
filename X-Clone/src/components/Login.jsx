@@ -30,12 +30,12 @@ const Login = () => {
       <div className="container">
         
           <div className={(isSigninModalOpen || isSigninModalOpen) && 'overlay'}>
-        <div className=  'login-container'  >
+        <div className=  'login-container text-white'  >
               <div className="x-logo">
               <img src="/src/images/Ninja-x.png" alt="X-image" />
             </div>
             <div className="social-login">
-                <h2 className='login-heading'>Happening now</h2>
+                <h2 className='login-heading text-white'>Happening now</h2>
                 <h2 className='login-description'>Join today.</h2>
               <button className='social-button'>
                 <img src="/src/images/google-logo.png" alt="google-logo" />

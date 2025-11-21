@@ -29,7 +29,7 @@ function StepTwo({formData, handleChange, prevStep, nextStep}) {
       <div className="">
         <button onClick={prevStep} className="text-white pt-4 absolute"><MoveLeft size={15}/> </button>
       </div>
-      <div className="py-4">
+      <div className="py-4 px-5">
         <div className="">
            <div className="flex justify-center !space-y-4">
                     <img src={Xlogo} alt="Xlogo-icon" className="w-[50px] h-[50px]" />
@@ -52,7 +52,7 @@ function StepTwo({formData, handleChange, prevStep, nextStep}) {
       <div className="flex justify-center mt-36">
         <button onClick={handleNext}
         disabled = {isDisabled}
-        className={`rounded-full p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
+        className={`rounded-full p-2 font-semibold min-w-md hover:cursor-pointer text-black ${isDisabled
             ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer"
          }`}
         >Next</button>
