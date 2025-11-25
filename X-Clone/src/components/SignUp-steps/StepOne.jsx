@@ -116,8 +116,8 @@ function StepOne({formData, handleChange, nextStep}) {
        <div className="flex items-center justify-center">
          <button onClick={handleNext}
          disabled={isDisabled} 
-         className={`rounded-full !p-2 font-semibold min-w-md hover:cursor-pointer ${isDisabled
-            ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer"
+         className={`rounded-full !p-2 font-semibold min-w-md hover:cursor-pointer text-black ${isDisabled
+            ? "bg-gray-200 cursor-not-allowed" : "bg-white cursor-pointer "
          }`}>Next</button>
        </div>
     </div>
