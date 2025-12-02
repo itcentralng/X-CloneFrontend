@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 10rem;
-  color: white;
+  /* color: white; */
   margin: auto;
   padding: 50px;
   position: relative;

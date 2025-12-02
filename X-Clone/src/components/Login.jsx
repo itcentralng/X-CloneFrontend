@@ -3,8 +3,16 @@ import { useState } from 'react'
 import Modal from './SignUp-steps/Modal'
 import SignUp from './SignUp'
 import './Login.css'
+import api from '../API/api'
+
+
+
+
 const Login = () => {
-  const [username, setUsername] = useState("");
+  //const [username, setUsername] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [showPasswordStep, setShowPasswordStep] = useState(false)
   const [error, setError] = useState("");
 
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false)
@@ -15,27 +23,59 @@ const Login = () => {
   const closeSigninModal = () => setIsSigninModalOpen(false)
 
 
-  const handleSubmit = (e) => {
+  const handleNextStep = (e) => {
     e.preventDefault();
-    if (!username.trim()) {
+    if (!email.trim()) {
       setError("Please enter your email, phone, or username.");
       return;
     }
     setError("");
+    setShowPasswordStep(true)
     // API call here
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!password.trim()) {
+      setError("Please enter your password")
+      return
+    }
+    setError("")
+
+    try {
+      const {data} = await api.post('/login', {email, password})
+      console.log("Login response:", data);
+       if (data?.token && data?.user) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+      // redirect to profile using whatever ID is present
+      const userId = data.user.id || data.user._id; // fallback if backend uses _id
+      window.location.href = `profile/${userId}`;
+    } else {
+      console.error("Unexpected login response:", data);
+      setError("Unexpected server response");
+    }
+
+  
+    } catch (error) {
+      console.error(error);
+      setError(error.respone?.data?.message || "Login Failed")
+      
+    }
+  } 
 
   return (
     <>
       <div className="container">
         
           <div className={(isSigninModalOpen || isSigninModalOpen) && 'overlay'}>
-        <div className=  'login-container'  >
+        <div className=  'login-container text-white'  >
               <div className="x-logo">
               <img src="/src/images/Ninja-x.png" alt="X-image" />
             </div>
             <div className="social-login">
-                <h2 className='login-heading'>Happening now</h2>
+                <h2 className='login-heading text-white'>Happening now</h2>
                 <h2 className='login-description'>Join today.</h2>
               <button className='social-button'>
                 <img src="/src/images/google-logo.png" alt="google-logo" />
@@ -70,8 +110,8 @@ const Login = () => {
         </div>
         {
 
-          isSigninModalOpen &&
-          <form onSubmit={handleSubmit} className='signIn-container'>
+          isSigninModalOpen && !showPasswordStep && (
+            <form onSubmit={handleNextStep} className='signIn-container'>
             <div className="x-logo">
               <div onClick={closeSigninModal} className='close-btn'>&times;</div>
               <img src="/src/images/Ninja-x.png" alt="X-image" />
@@ -96,8 +136,8 @@ const Login = () => {
                 type="text" 
                 placeholder="Phone, email, or username" 
                 className="input-field"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               {error && <p className="error-message">{error}</p>}
 
@@ -112,9 +152,64 @@ const Login = () => {
             </div>
 
           </form>
+          )
+          
             
           
         } 
+
+
+
+      {
+
+          isSigninModalOpen && showPasswordStep && (
+            <form onSubmit={handleSubmit} className='signIn-container'>
+            <div className="x-logo">
+              <div onClick={closeSigninModal} className='close-btn'>&times;</div>
+              <img src="/src/images/Ninja-x.png" alt="X-image" />
+            </div>
+          
+            <div className="social-login">
+              <h2 className="sign-heading">Sign in to X</h2>
+
+              <button type="button" className="social-button">
+                <img src="/src/images/google-logo.png" alt="google-logo" />
+                Sign up with Google
+              </button>
+
+              <button type="button" className="social-button">
+                <img src="/src/images/apple-logo.png" alt="apple-logo" />
+                Sign up with Apple
+              </button>
+
+              <p className="separator"><span>or</span></p>
+
+              <input 
+                type="password" 
+                placeholder="" 
+                className="input-field"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+
+              {error && <p className="error-message">{error}</p>}
+              <a href="#">Forgot Password?</a>
+              <button type="submit" className="social-button font-bold">Log in</button>
+              
+
+              <p className="low-description">
+                Don't have an account? <a href="#"> Sign up </a>
+              </p>
+            </div>
+
+          </form>
+          )
+          
+            
+          
+        } 
+
+          
       </div> 
     </>
   )
