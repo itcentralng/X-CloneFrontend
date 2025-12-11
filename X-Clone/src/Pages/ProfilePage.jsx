@@ -3,11 +3,27 @@ import Grok from "../../src/images/grok-png.png"
 import Xpng from "../../src/images/X.png"
 import Profile from "../images/bg2.jpg"
 import { Search, ArrowLeft, MapPin, CalendarDays } from 'lucide-react'
-
+import { useState } from "react"
+import ModalEdit from "../components/modals/ModalEdit"
 
 
 
 function ProfilePage() {
+
+const [isEditModalOpen, setIsEditModalOpen] = useState(false)
+function editModal (){
+   setIsEditModalOpen(true);
+}
+function closeEditModal (){
+   setIsEditModalOpen (false);
+}
+// const openEditModal = () => setIsEditModalOpen(true) && setIsEditModalOpen(false)
+// const closeEditModal = () => setIsEditModalOpen(false)
+// const [closeModal, setCloseModal] = useState(false)
+
+//   function closeEditModal() {
+//     setCloseModal(false);
+//   }
 
 const user = {name: "John", userName:"@john01", 
    Bio:"Frontend Developer", website: 'https://devjohn.com', 
@@ -20,7 +36,7 @@ const posts = [
    {id:2, title: "AI the new trend in 2025", content:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores unde esse aliquid explicabo similique asperiores in libero necessitatibus quos, porro labore ad quaerat molestiae"}
 ]
   return (
-    <div className="w-full h-screen bg-black text-white flex justify-center">
+    <div className={`w-full h-screen bg-black text-white flex justify-center ${isEditModalOpen && 'fixed'}`}>
       <div className="w-full max-w-[900px]">
         <div className="w-full max-w-[550px] mx-auto bg-black border border-gray-700">
         {/* Header */}
@@ -48,8 +64,13 @@ const posts = [
                 <img src={Profile} alt="profile-pic"  className="w-[130px] h-[130px] rounded-full border-4 border-black"/>
             </div>
            <div className="flex justify-end !p-2">
-             <button className="!py-1.5 !px-2 border rounded-3xl border-gray-300 font-bold hover:bg-gray-900 text-sm hover:cursor-pointer">Edit Profile</button>
+             <button className="!py-1.5 !px-2 border rounded-3xl border-gray-300 font-bold hover:bg-gray-900 text-sm hover:cursor-pointer" onClick={editModal} >Edit Profile</button>
            </div>
+            {isEditModalOpen &&                
+                  <ModalEdit  closeEditModal={closeEditModal}
+                              isEditModalOpen={isEditModalOpen}
+                  />
+              }
           
             </div>
             {/* User Info  */}
