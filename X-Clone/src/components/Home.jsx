@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Axios from "axios";
+import Feed from "./Feed";
+import { tweet } from "../../Tweet";
 
 
 function Home() {
@@ -61,8 +63,12 @@ function Home() {
         </div>
 
       </div>
+        {
 
-
+        tweet.map( (item, index) => (
+          <Feed key={index} item = {item} />
+        ))
+        }
 
 
 
